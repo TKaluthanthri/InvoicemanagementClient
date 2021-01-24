@@ -1,0 +1,101 @@
+
+  <hr>
+  <div class="row" style="align-items: center;">
+    <div class="col-2" style="margin-left:120px; align-items: center;">
+      <button type="button" class="btn btn-primary" (click)="AddInvoice()"><i class="bi bi-receipt"></i>  Add Invoice</button>
+    </div>
+      <div  class="col-6" style="display: inline-flex; align-items: center;">
+        <label for="customerList" style="width: 300px;">Select Customer</label>
+            <select class="form-control"  style="margin: 25px;padding: 5px;" (change)="SelectCustomer($event.target.value)"  id="customers"  required name="customer" >
+              <option *ngFor="let customer of customerList" [value]="customer">{{customer}}</option>
+            </select>
+
+            <button type="button" class="btn btn-primary" (click)="SearchInvoicesByCustomer()"><i class="bi bi-receipt"></i>  Search Invoices by Email</button>
+      </div>
+  </div>
+  <br>
+  <div class="row" style="padding-left: 25px; margin-left: 25px;">
+    <div class="col-4" *ngIf="isAddInvoice">
+      <h3>Invoice Details</h3>
+      <form class="form-block" action="">
+        <div class="form-element">
+          <label for="Id"> Invoice Number </label>
+          <input type="text" id="Id" name="Id" [(ngModel)]="invoice.InvoiceNumber">
+        </div>
+        <div class="form-element">
+          <label for="invoiceDate">Invoice Created Date</label>
+          <input type="datetime-local" id="invoiceDate" name="invoice.invoiceDate" [(ngModel)]="invoice.invoiceDate">
+        </div>
+        <div class="form-element">
+          <label for="sum">Amount </label>
+          <input type="number" id="sum" name="sum" [(ngModel)]="invoice.Amount">
+        </div>
+
+        <div class="form-element">
+          <label for="sum" style="padding: 10px;">Customer Email </label>
+            <select class="form-control"  id="customerName"  style="width: 370px; border-radius: 9px; padding: 5px; margin: 3px 10px 5px 0;" (change)="SelectCustomer($event.target.value)" required name="customer">
+              <option *ngFor="let customer of customerList" [value]="customer">{{customer}}</option>
+            </select>
+        </div>
+
+        <div class="form-element">
+          <label for="paymentStatus">Payment Status</label>
+          <input type="text" id="paymentStatus" name="invoice.paymentStatus" [(ngModel)]="invoice.PaymentStatus">
+        </div>
+
+        <div class="checkbox-element">
+          <input class="" type="checkbox" value="" id="flexCheckDefault"  (change)="checkValue($event)">
+          <label class="form-check-label" for="flexCheckDefault">
+            Send invoice As Email
+          </label>
+        </div>
+
+
+        <button type="submit" class="successbtn" (click)="SaveInvoice(this.invoice)">Save</button>
+        <button type="submit" class="successbtn" style="background-color:#f1c909" (click)="invoiceCancel()">Cancel</button>
+      </form>
+    </div>
+    <div class="col-8">
+        <div style="padding-left: 50px;">
+          <form class="form-inline">
+            <input class="form-control mr-sm-1 justify-content-end" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
+          </form></div>
+        <table>
+          <thead>
+            <tr>
+              <th>Invoice Number</th>
+              <th>Invoice Created Date</th>
+              <th>Amount</th>
+              <th>Payment Status</th>
+              <th>Customer</th>
+              <th>Email Send</th>
+              <th></th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let invoice of invoices">
+              <td data-column="Invoicenumber">{{invoice.InvoiceNumber}}</td>
+              <td data-column="InvoiceDate">{{invoice.invoiceDate | date:'yyyy-MM-dd'}}</td>
+              <td data-column="Amount">{{invoice.Amount}}</td>
+              <td data-column="PaymentStatus">{{invoice.PaymentStatus}}</td>
+              <td data-column="customerName">{{invoice.CustomerEmail}}</td>
+              <td data-column="Email" *ngIf="invoice.IsMailSent === true">Yes</td>
+              <td data-column="Email" *ngIf="invoice.IsMailSent === false">No</td>
+
+              <td data-column="Twitter">
+                 <button type="submit" class="successbtn" (click)="getinvoice(this.invoice)">Edit</button>
+                 <button type="submit"class="dangerbtn" (click)="removeInvoice(this.invoice)">Remove</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+    </div>
+
+  </div>
+  <div class="content">
+  </div>
+
+

@@ -1,0 +1,224 @@
+table {
+	width: 850px;
+	border-collapse: collapse;
+	margin:50px auto;
+	}
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+	background: #eee;
+  }
+  .avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+th {
+	background: #4e4c49;
+	color: white;
+	font-weight: bold;
+	}
+
+td, th {
+  padding: 15px;
+  margin: 28px;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 14px;
+  font-family: 'Noto Sans JP', sans-serif;
+	}
+
+/*
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	table {
+	  	width: 100%;
+	}
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	tr { border: 1px solid #ccc; }
+
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 60%;
+		padding-right: 10px;
+		white-space: nowrap;
+		/* Label the data */
+		content: attr(data-column);
+
+		color: #000;
+		font-weight: bold;
+  }
+
+}
+
+.successbtn {
+    background-color: #f1c909d1;
+    border: none;
+    color: black;
+    text-align: center;
+    width: 100px;
+    height: 43px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 3px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+.dangerbtn {
+  background-color: red;
+  border: none;
+  color: black;
+  text-align: center;
+  width: 100px;
+  height: 43px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 3px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.submitbtn {
+  background-color: green;
+  border: none;
+  color: black;
+  text-align: center;
+  width: 100px;
+  height: 43px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 3px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.row1{
+
+  width: 60.5%;
+  max-height: 800px;
+  padding: 25px;
+  margin: 25px;
+  background: #fffcd3;
+  box-shadow: 0px 45px 77px -50px rgb(60 50 117 / 42%);
+  border-radius: 20px;
+  transform: translateX(14px);
+  font-family:  'Noto Sans JP', sans-serif;
+ }
+ .customerheader{
+
+  width: 100%;
+  max-height: 80px;
+  padding-left: 40px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin-right: 25px;
+  background:#f8f9fa;
+
+  transform: translateX(14px);
+  font-family:  'Noto Sans JP', sans-serif;
+ }
+ .row2{
+
+  width: 39.5%;
+  max-height: 800px;
+  padding: 25px;
+  margin: 25px;
+  background:#f8f9fa;
+  box-shadow: 0px 45px 77px -50px rgb(60 50 117 / 42%);
+  border-radius: 20px;
+  transform: translateX(14px);
+  font-family:  'Noto Sans JP', sans-serif;
+ }
+ .content{
+  display:flex;
+ }
+
+ .form-block {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.form-block label {
+  margin: 5px 10px 5px 0;
+      display: table-row;
+      font-size: small;
+}
+
+.form-block input {
+  vertical-align: middle;
+  width: 370px;
+  margin: 3px 10px 5px 0;
+  padding: 12px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 9px;
+}
+
+
+.form-block button {
+  display: block;
+  margin: 13px 11px;
+  padding: 11px 17px;
+  width: 100px;
+  background-color: #078b4f;
+  border: 1px solid #ddd;
+  color: white;
+  cursor: pointer;
+  font-family:  'Noto Sans JP', sans-serif;
+}
+
+.form-block button:hover {
+  background-color: royalblue;
+}
+
+@media (max-width: 800px) {
+  .form-inline input {
+    margin: 10px 0;
+  }
+
+  .form-block {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .checkbox-elemen{
+    display: flex;
+}
+
+}
